@@ -1,0 +1,461 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARSX | Official Website</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #fff;
+    color: #000;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* HEADER */
+.header {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.date {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #777;
+}
+
+.owner {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #222;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    min-height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.container {
+    text-align: center;
+}
+
+.logo {
+    font-size: clamp(65px, 15vw, 125px);
+    font-weight: 900;
+    letter-spacing: -7px;
+    background: linear-gradient(
+        145deg,
+        #000 20%,
+        #555 40%,
+        #000 55%,
+        #777 65%,
+        #000 80%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: shine 5s linear infinite;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,.15));
+}
+
+.logo .small {
+    font-size: .75em;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.footer {
+    margin-top: 16px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #999;
+}
+
+/* SCROLL */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #999;
+    animation: scrollMove 2s infinite;
+    text-decoration: none;
+}
+
+@keyframes scrollMove {
+    0%, 100% {
+        transform: translate(-50%, 0);
+    }
+    50% {
+        transform: translate(-50%, 10px);
+    }
+}
+
+/* MUSIC */
+.music {
+    padding: 100px 25px;
+    border-top: 1px solid #eee;
+    background: #fafafa;
+}
+
+.music-title {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 400;
+    letter-spacing: 5px;
+    margin-bottom: 45px;
+}
+
+.music-card {
+    max-width: 650px;
+    margin: auto;
+    padding: 18px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    transition: .3s;
+}
+
+.music-card:hover {
+    border-color: #aaa;
+    transform: translateY(-3px);
+}
+
+/* COVER */
+.cover {
+    width: 170px;
+    height: 170px;
+    flex-shrink: 0;
+    background: #eee;
+    overflow: hidden;
+}
+
+.cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.cover-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: 900;
+    color: #999;
+}
+
+/* TRACK */
+.track-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.track-number {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #aaa;
+}
+
+.track-name {
+    font-size: 18px;
+    margin-top: 13px;
+    font-weight: 600;
+}
+
+.artist {
+    font-size: 12px;
+    color: #999;
+    margin-top: 7px;
+}
+
+audio {
+    width: 100%;
+    height: 38px;
+    margin-top: 20px;
+    display: block;
+}
+
+/* ABOUT */
+.about {
+    min-height: 75vh;
+    padding: 100px 25px;
+    border-top: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-title {
+    font-size: 25px;
+    font-weight: 400;
+    letter-spacing: 5px;
+    margin-bottom: 25px;
+}
+
+.section-text {
+    font-size: 13px;
+    color: #888;
+    letter-spacing: 1px;
+    text-align: center;
+    line-height: 2;
+    max-width: 500px;
+}
+
+/* TELEGRAM */
+.telegram {
+    margin-top: 65px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #111;
+    border: 1px solid #ddd;
+    padding: 13px 25px;
+    transition: .3s;
+}
+
+.telegram:hover {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+    transform: translateY(-3px);
+}
+
+.telegram svg {
+    width: 21px;
+    height: 21px;
+    fill: currentColor;
+}
+
+.telegram span {
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+/* BOTTOM */
+.bottom {
+    text-align: center;
+    padding: 25px;
+    border-top: 1px solid #eee;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #aaa;
+}
+
+/* MOBILE */
+@media(max-width: 600px) {
+    .header {
+        top: 22px;
+        left: 20px;
+        right: 20px;
+    }
+
+    .logo {
+        letter-spacing: -4px;
+    }
+
+    .music {
+        padding: 80px 18px;
+    }
+
+    .music-card {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+    }
+
+    .cover {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+    }
+
+    .track-info {
+        width: 100%;
+    }
+
+    .section-title {
+        font-size: 21px;
+    }
+
+    .section-text {
+        font-size: 12px;
+    }
+}
+
+/* REDUCE MOTION */
+@media(prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="date" id="date"></div>
+    <div class="owner">Arshia Ajankan</div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="container">
+        <div class="logo">
+            A<span class="small">rs</span>X
+        </div>
+
+        <div class="footer">
+            ™ &nbsp; 2026
+        </div>
+    </div>
+
+    <a href="#music" class="scroll-indicator">
+        SCROLL DOWN ↓
+    </a>
+</section>
+
+<!-- MUSIC -->
+<section class="music" id="music">
+
+    <h2 class="music-title">MUSIC</h2>
+
+    <div class="music-card">
+
+        <!-- ALBUM COVER -->
+        <div class="cover">
+            <img
+                src="./assets/IMG_5068.jpeg"
+                alt="Fargh Darim cover"
+                onerror="this.style.display='none';this.nextElementSibling.hidden=false;"
+            >
+
+            <div class="cover-placeholder" hidden>
+                ARSX
+            </div>
+        </div>
+
+        <!-- TRACK INFO -->
+        <div class="track-info">
+
+            <div class="track-number">
+                TRACK 01
+            </div>
+
+            <div class="track-name">
+                Fargh Darim
+            </div>
+
+            <div class="artist">
+                Shahin Miri
+            </div>
+
+            <audio controls preload="metadata">
+                <source
+                    src="./assets/Shahin%20Miri%20%E2%80%93%20Fargh%20Darim.mp3"
+                    type="audio/mpeg"
+                >
+                Your browser does not support audio playback.
+            </audio>
+
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+    <h2 class="section-title">
+        ABOUT
+    </h2>
+
+    <p class="section-text">
+        Welcome to ARSX.<br>
+        Something new is coming soon.<br>
+        Stay connected.
+    </p>
+
+    <a
+        class="telegram"
+        href="https://t.me/Ars_teamX"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+
+        <svg viewBox="0 0 24 24">
+            <path d="M22 2L2 10.5L9 13L18 6L11 15L11 21L15 17L19 20L22 2Z"/>
+        </svg>
+
+        <span>TELEGRAM</span>
+
+    </a>
+</section>
+
+<!-- BOTTOM -->
+<div class="bottom">
+    ARSX © 2026
+</div>
+
+<!-- DATE -->
+<script>
+function updateDate() {
+
+    const today = new Date();
+
+    const options = {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric'
+    };
+
+    document.getElementById("date").innerText =
+        today.toLocaleDateString('en-US', options);
+}
+
+updateDate();
+</script>
+
+</body>
+</html>
